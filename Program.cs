@@ -15,7 +15,7 @@ namespace _8._6._1
                 try
                 {
                     DirectoryInfo dirInfo = new DirectoryInfo(filePath);
-                    var lastMod = File.GetLastAccessTime(filePath);
+                    var lastMod = File.GetLastWriteTime(filePath);
                     if (lastMod <= DateTime.Now - TimeSpan.FromMinutes(30))
                     {
                         dirInfo.Delete(true);
@@ -23,7 +23,7 @@ namespace _8._6._1
                     }
                     else
                     {
-                        Console.WriteLine("Время последнего использования файлов не превысило 30 минут");
+                        Console.WriteLine("Время последнего использования файлов не превысило 30 минут. \nВремя последнего использования файла: {0}", lastMod);
                     }
 
                 }
